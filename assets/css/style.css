@@ -17,11 +17,10 @@ header {
     }
 
 button {
-        background: radial-gradient(circle, rgb(42, 2, 199) 0%, rgba(14, 4, 104, 0.954) 100%);
+        background-color:#969696;
         border-radius: 8px;
-        color: #f9fafc;
         cursor: pointer;
-        font-size: 2em;
+        font-size: 25px;
         letter-spacing: 0.21px;
         line-height: 16px;
         max-width: 255px;
@@ -31,7 +30,14 @@ button {
         transition-property: background-color;
         transition-timing-function: linear;
         margin-top: 0.6em;
+        margin: 10px;
     }
+
+.start-button {
+    background: radial-gradient(circle, rgb(42, 2, 199) 0%, rgba(14, 4, 104, 0.954) 100%);
+    color:#f9fafc;
+    font-size: 2em;
+}
 
 .timer {
     text-align: right;
