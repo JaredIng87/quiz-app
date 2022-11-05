@@ -35,5 +35,14 @@ button {
 
 .timer {
     text-align: right;
+    margin: 20px;
+}
+
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
 }
 
