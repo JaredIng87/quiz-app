@@ -30,7 +30,20 @@ function questionOne() {
     buttonTwo.setAttribute("data-state", "false");
     buttonThree.setAttribute("data-state", "false");
     buttonFour.setAttribute("data-state", "false");
-    
+    answerButtons.addEventListener('click', function(event) {
+        var element = event.target;
+        if (element.matches("button")) {
+            var state = element.getAttribute("data-state");
+            if (state === "true") {
+                headerElement.classList.add('correct');
+            } 
+            else {
+                headerElement.classList.add('incorrect');
+                timeLeft -= 15;
+            } 
+        }
+        questionTwo();
+    });
 };
 
 
@@ -44,6 +57,20 @@ function questionTwo(event) {
     buttonTwo.setAttribute("data-state", "true");
     buttonThree.setAttribute("data-state", "false");
     buttonFour.setAttribute("data-state", "false");
+    answerButtons.addEventListener('click', function(event) {
+        var element = event.target;
+        if (element.matches("button")) {
+            var state = element.getAttribute("data-state");
+            if (state === "true") {
+                headerElement.classList.add('correct');
+            } 
+            else {
+                headerElement.classList.add('incorrect');
+                timeLeft -= 15;
+            } 
+        }
+        questionThree();
+    });
 };
 
 function questionThree() {
@@ -52,7 +79,23 @@ function questionThree() {
     buttonTwo.textContent = 'CSS';
     buttonThree.textContent = 'JavaScript';
     buttonFour.textContent = 'English';
-    buttonThree.setAttribute("data-state", "true")
+    buttonOne.setAttribute("data-state", "false");
+    buttonTwo.setAttribute("data-state", "false");
+    buttonThree.setAttribute("data-state", "true");
+    buttonFour.setAttribute("data-state", "false");
+    answerButtons.addEventListener('click', function(event) {
+        var element = event.target;
+        if (element.matches("button")) {
+            var state = element.getAttribute("data-state");
+            if (state === "true") {
+                headerElement.classList.add('correct');
+            } 
+            else {
+                headerElement.classList.add('incorrect');
+                timeLeft -= 15;
+            } 
+        }
+    });
 };
 
 
@@ -83,16 +126,3 @@ startButton.addEventListener("click", function() {
     
 });
 
-answerButtons.addEventListener('click', function(event) {
-    var element = event.target;
-    if (element.matches("button")) {
-        var state = element.getAttribute("data-state");
-        if (state === "true") {
-            headerElement.classList.add('correct');
-        } 
-        else {
-            headerElement.classList.add('incorrect');
-            timeLeft -= 15;
-        } 
-    }
-});
