@@ -18,10 +18,36 @@ quizQuestion.setAttribute('style', "margin-top:50px; text-align:center; font-siz
 answerButtons.setAttribute('style', "margin-top:50px; text-align:center; font-size:25px;");
 
 
-buttonOne.textContent = 'one';
-buttonTwo.textContent = 'two';
-buttonThree.textContent = 'three';
-buttonFour.textContent = 'four';
+function questionOne() {
+    quizQuestion.textContent = "Which language creates the framework for your web application?";
+    buttonOne.textContent = 'HTML';
+    buttonTwo.textContent = 'CSS';
+    buttonThree.textContent = 'JavaScript';
+    buttonFour.textContent = 'English';
+    buttonOne.setAttribute("data-state", "true")
+
+};
+
+
+function questionTwo() {
+    quizQuestion.textContent = "Which language creates the style for your web application?";
+    buttonOne.textContent = 'HTML';
+    buttonTwo.textContent = 'CSS';
+    buttonThree.textContent = 'JavaScript';
+    buttonFour.textContent = 'English';
+    buttonTwo.setAttribute("data-state", "true")
+};
+
+function questionThree() {
+    quizQuestion.textContent = "Which language creates the interactivity for your web application?";
+    buttonOne.textContent = 'HTML';
+    buttonTwo.textContent = 'CSS';
+    buttonThree.textContent = 'JavaScript';
+    buttonFour.textContent = 'English';
+    buttonThree.setAttribute("data-state", "true")
+};
+
+
 
 
 function countdown() {
@@ -44,6 +70,22 @@ var timeInterval = setInterval(function () {
 startButton.addEventListener("click", function() {
     body.appendChild(quizQuestion);
     body.appendChild(answerButtons);
-    quizQuestion.textContent = "getting there";
+    questionOne();
     countdown();
+});
+
+answerButtons.addEventListener('click', function(event) {
+    var element = event.target;
+
+    if (element.matches("button")) {
+        var state = element.getAttribute("data-state");
+        if (state === "true") {
+            headerElement.classList.add('correct');
+        
+        } 
+        else {
+            headerElement.classList.add('incorrect');
+
+        }  
+    }
 });
