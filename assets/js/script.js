@@ -1,4 +1,5 @@
 var body = document.body;
+var timeLeft = 75;
 var startButton = document.querySelector(".start-button");
 var headerElement = document.querySelector("header");
 var timerElement = document.querySelector(".timer");
@@ -8,6 +9,7 @@ var buttonOne = document.createElement('button');
 var buttonTwo = document.createElement('button');
 var buttonThree = document.createElement('button');
 var buttonFour = document.createElement('button');
+
 
 answerButtons.appendChild(buttonOne);
 answerButtons.appendChild(buttonTwo);
@@ -24,18 +26,24 @@ function questionOne() {
     buttonTwo.textContent = 'CSS';
     buttonThree.textContent = 'JavaScript';
     buttonFour.textContent = 'English';
-    buttonOne.setAttribute("data-state", "true")
-
+    buttonOne.setAttribute("data-state", "true");
+    buttonTwo.setAttribute("data-state", "false");
+    buttonThree.setAttribute("data-state", "false");
+    buttonFour.setAttribute("data-state", "false");
+    
 };
 
 
-function questionTwo() {
+function questionTwo(event) {
     quizQuestion.textContent = "Which language creates the style for your web application?";
     buttonOne.textContent = 'HTML';
     buttonTwo.textContent = 'CSS';
     buttonThree.textContent = 'JavaScript';
     buttonFour.textContent = 'English';
-    buttonTwo.setAttribute("data-state", "true")
+    buttonOne.setAttribute("data-state", "false");
+    buttonTwo.setAttribute("data-state", "true");
+    buttonThree.setAttribute("data-state", "false");
+    buttonFour.setAttribute("data-state", "false");
 };
 
 function questionThree() {
@@ -51,7 +59,6 @@ function questionThree() {
 
 
 function countdown() {
-    var timeLeft = 75;
 
 var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
@@ -70,22 +77,22 @@ var timeInterval = setInterval(function () {
 startButton.addEventListener("click", function() {
     body.appendChild(quizQuestion);
     body.appendChild(answerButtons);
+    startButton.disabled = true;
     questionOne();
     countdown();
+    
 });
 
 answerButtons.addEventListener('click', function(event) {
     var element = event.target;
-
     if (element.matches("button")) {
         var state = element.getAttribute("data-state");
         if (state === "true") {
             headerElement.classList.add('correct');
-        
         } 
         else {
             headerElement.classList.add('incorrect');
-
-        }  
+            timeLeft -= 15;
+        } 
     }
 });
