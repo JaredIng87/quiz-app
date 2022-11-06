@@ -95,7 +95,14 @@ function questionThree() {
                 timeLeft -= 15;
             } 
         }
+        results();
     });
+};
+
+function results() {
+    answerButtons.remove();
+    quizQuestion.textContent = 'Your Score:\n' + timeLeft;
+    localStorage.setItem("score", timeLeft);
 };
 
 
@@ -125,4 +132,3 @@ startButton.addEventListener("click", function() {
     countdown();
     
 });
-
